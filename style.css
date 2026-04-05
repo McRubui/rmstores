@@ -1,0 +1,45 @@
+body{
+margin:0;
+font-family:Arial;
+background:#0b0f19;
+color:white;
+text-align:center;
+}
+
+header{
+padding:20px;
+background:#111827;
+}
+
+nav a{
+margin:10px;
+color:white;
+text-decoration:none;
+}
+
+.hero{
+padding:100px 20px;
+background:linear-gradient(#111827,#000);
+}
+
+.btn{
+display:inline-block;
+padding:12px 25px;
+background:red;
+color:white;
+text-decoration:none;
+border-radius:5px;
+}
+
+.products{
+display:flex;
+justify-content:center;
+gap:30px;
+padding:50px;
+}
+
+.product{
+background:#1f2937;
+padding:20px;
+border-radius:10px;
+}
