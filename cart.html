@@ -7,6 +7,11 @@
 
 <link rel="stylesheet" href="style.css">
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=Abx5YIedOP_v0vXI_8dKs6LqOv_kZv6fkW3DpsHUu8XqxJmAiO-U3e-XInrrVFCfpZj-vl9jFe3ibmUO&currency=USD"></script>
+
 </head>
 
 <body>
@@ -26,9 +31,90 @@
 
 <h2>Your Cart</h2>
 
-<p>Items will appear here.</p>
+<div id="cart-items"></div>
+
+<h3>Total: $<span id="cart-total">0</span></h3>
+
+<div id="paypal-button-container"></div>
 
 </section>
 
+<script>
+
+/* Load cart from browser storage */
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function displayCart(){
+
+let cartContainer = document.getElementById("cart-items");
+
+cartContainer.innerHTML="";
+
+let total = 0;
+
+cart.forEach(item =>{
+
+total += item.price;
+
+cartContainer.innerHTML += `
+<div class="cart-item">
+<img src="${item.image}" width="80">
+<h4>${item.name}</h4>
+<p>$${item.price}</p>
+</div>
+`;
+
+});
+
+document.getElementById("cart-total").innerText = total;
+
+return total;
+
+}
+
+let totalAmount = displayCart();
+
+/* PayPal Checkout */
+
+paypal.Buttons({
+
+createOrder: function(data, actions) {
+
+return actions.order.create({
+
+purchase_units: [{
+
+amount: {
+value: totalAmount.toFixed(2)
+}
+
+}]
+
+});
+
+},
+
+onApprove: function(data, actions) {
+
+return actions.order.capture().then(function(details) {
+
+alert("Payment successful from " + details.payer.name.given_name);
+
+/* Clear cart after payment */
+
+localStorage.removeItem("cart");
+
+window.location.href="index.html";
+
+});
+
+}
+
+}).render('#paypal-button-container');
+
+</script>
+
 </body>
+
 </html>
