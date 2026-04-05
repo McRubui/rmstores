@@ -2,43 +2,68 @@
 <html>
 
 <head>
-
 <title>Shop | RMStores</title>
-
 <link rel="stylesheet" href="style.css">
-
-<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
-
 </head>
 
 <body>
 
-<header>
+<header class="navbar">
+<h1 class="logo">RMStores</h1>
 
-<h1>RMStores Shop</h1>
-
+<nav>
 <a href="index.html">Home</a>
+<a href="shop.html">Shop</a>
+<a href="cart.html">Cart</a>
+</nav>
 
 </header>
 
-<section class="products">
+<section class="featured">
+
+<h2>Shop Collection</h2>
+
+<div class="product-grid">
 
 <div class="product">
 
-<img src="bmwshirt.jpg" width="250">
+<img src="images/bmwshirt.jpg">
 
-<h3>Midnight BMW Shirt</h3>
+<h3>Midnight Drive Tee</h3>
 
 <p>$24</p>
 
-<div id="paypal-button-container"></div>
+<a href="product.html" class="btn">View Product</a>
+
+</div>
+
+<div class="product">
+
+<img src="images/turbohoodie.jpg">
+
+<h3>Turbocharged Hoodie</h3>
+
+<p>$39</p>
+
+<a href="product.html" class="btn">View Product</a>
+
+</div>
+
+<div class="product">
+
+<img src="images/poster.jpg">
+
+<h3>Performance Poster</h3>
+
+<p>$19</p>
+
+<a href="product.html" class="btn">View Product</a>
+
+</div>
 
 </div>
 
 </section>
 
-<script src="script.js"></script>
-
 </body>
-
 </html>
